@@ -1,7 +1,7 @@
 <?php
 
 $servername = "localhost";
-$username = "lbattaglioli2000";
+$username = "root";
 $password = "";
 $db = "opencg";
 

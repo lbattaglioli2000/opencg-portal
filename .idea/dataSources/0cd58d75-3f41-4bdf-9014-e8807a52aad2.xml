@@ -14,53 +14,82 @@
     <schema id="8" parent="1" name="students"/>
     <schema id="9" parent="1" name="test"/>
     <table id="10" parent="2" name="students"/>
-    <column id="11" parent="10" name="userID">
+    <table id="11" parent="2" name="teacher"/>
+    <column id="12" parent="10" name="userID">
       <Position>1</Position>
       <DataType>int(6)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="12" parent="10" name="userName">
+    <column id="13" parent="10" name="userName">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="10" name="email">
+    <column id="14" parent="10" name="email">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="10" name="schoolID">
+    <column id="15" parent="10" name="schoolID">
       <Position>4</Position>
       <DataType>int(6)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="10" name="schoolName">
+    <column id="16" parent="10" name="schoolName">
       <Position>5</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="10" name="pre">
+    <column id="17" parent="10" name="pre">
       <Position>6</Position>
       <DataType>int(2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="17" parent="10" name="mid">
+    <column id="18" parent="10" name="mid">
       <Position>7</Position>
       <DataType>int(2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="10" name="post">
+    <column id="19" parent="10" name="post">
       <Position>8</Position>
       <DataType>int(2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="19" parent="10" name="userID">
+    <index id="20" parent="10" name="userID">
       <ColNames>userID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="20" parent="10" name="userID">
+    <key id="21" parent="10" name="userID">
       <ColNames>userID</ColNames>
       <UnderlyingIndexName>userID</UnderlyingIndexName>
+    </key>
+    <column id="22" parent="11" name="schoolID">
+      <Position>1</Position>
+      <DataType>int(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="11" name="schoolName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="11" name="adminName">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="email">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="11" name="schoolID">
+      <ColNames>schoolID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="27" parent="11" name="schoolID">
+      <ColNames>schoolID</ColNames>
+      <UnderlyingIndexName>schoolID</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
