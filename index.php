@@ -28,7 +28,7 @@
                                 <p>By registering as a student, you're added to a database and we can easily update your exam
                                     information and scores. As a student, simply by entering your student ID, you're able to check your
                                     scores instantaneously.</p>
-                                <p><a href="/register/student" class="btn btn-primary" role="button">Register</a> <a href="/check/student" class="btn btn-default" role="button">Check Your Score</a></p>
+                                <p><a href="/register/student" class="btn btn-primary btn-lg" role="button">Register</a></p>
                             </div>
                         </div>
                     </div>
@@ -39,14 +39,9 @@
                                 <p>By registering as an institution, we keep track of your school/institution
                                     rating and average score. This allows you to easily view this information. We're working on making
                                     this data driven application work with more demographics and data as well.</p>
-                                <p><a href="/register/institution" class="btn btn-primary" role="button">Register</a> <a href="/check/institution" class="btn btn-default" role="button">Check Institution Score</a></p>
+                                <p><a href="/register/institution" class="btn btn-primary btn-lg" role="button">Register</a></p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="help" class="btn btn-block btn-primary btn-lg">Need help?</a>
                     </div>
                 </div>
                 <?php require "includes/footer.php"; ?>

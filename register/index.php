@@ -38,12 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="help" class="btn btn-block btn-primary btn-lg">Need help?</a>
-            </div>
-        </div>
-        <?php require "includes/footer.php"; ?>
+        <?php require "../includes/footer.php"; ?>
     </div>
 </div>
 </body>

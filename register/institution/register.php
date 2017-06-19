@@ -3,30 +3,29 @@
 require('../../connect.php');
 
 // Random 6 digit user ID
-$userID = mt_rand(100000, 999999);
-$result = $conn->query("SELECT FROM students WHERE userID = '$userID'");
+$schoolID = mt_rand(100000, 999999);
+$result = $conn->query("SELECT FROM teachers WHERE schoolID = '$schoolID'");
 // Get unique ID and make sure it doesn't exist. If it does exist, get a new one. Though the probability of it existing is little to none.
 while($result->num_rows != 0){
-    $userID = mt_rand(100000, 999999);
-    $result = $conn->query("SELECT id FROM students WHERE id = '$userID'");
+    $schoolID = mt_rand(100000, 999999);
+    $result = $conn->query("SELECT schoolID FROM students WHERE schoolID = '$schoolID'");
 }
 
 // Store POST data in separate variables
-$userName = ucwords($_POST['userName']);
-$email = strtolower($_POST['email']);
-$schoolID = $_POST['schoolID'];
 $schoolName = ucwords($_POST['schoolName']);
+$email = strtolower($_POST['email']);
+$adminName = ucwords($_POST['adminName']);
 
 
 // Insert data into database
-$sql = "INSERT INTO students (userID, userName, email, schoolID, schoolName)
-VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
+$sql = "INSERT INTO teacher (schoolID, schoolName, adminName, email)
+VALUES ('$schoolID', '$schoolName', '$adminName', '$email')";
 
 ?>
     <!DOCTYPE html>
     <html>
     <head>
-        <title>OpenCG Student Registration</title>
+        <title>OpenCG Institution Registration</title>
         <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="../../css/main.css" type="text/css">
         <script src="../../js/jquery-3.2.1.min.js"></script>
@@ -46,7 +45,7 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
             <?php
             if (mysqli_query($conn, $sql)) {
                 echo("<div class=\"alert alert-success\">
-                        <p><b>Way to go, " . $userName . "!</b> You've successfully registered as a student! We recommend that you print out this
+                        <p><b>Way to go!</b> You've successfully registered as an institution! We recommend that you print out this
                 page and keep if for your records.</p>
                       </div>");
             }
@@ -54,15 +53,15 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
 
             <h1>Student Information</h1>
             <div class="well">
-                <h3>Name: <small><?php echo $userName; ?></small></h3>
-                <h3>OpenCG Student ID: <small><?php echo $userID; ?></small></h3>
-                <h3>School: <small><?php echo $schoolName; ?></small></h3>
-                <h3>Email: <small><?php echo $email; ?></small></h3>
+                <h3>School Name: <small><?php echo $schoolName; ?></small></h3>
+                <h3>OpenCG School ID: <small><?php echo $schoolID; ?></small></h3>
+                <h3>Teacher/Admin Name: <small><?php echo $adminName; ?></small></h3>
+                <h3>Contact Email: <small><?php echo $email; ?></small></h3>
             </div>
             <h1>What is all this?</h1>
-            <p>You will need this information because this is what lets you access your examination scores. Once you take
+            <p>You will need this information because this is what lets you access your school/institution examination scores. Once your students take
             one of our exams, and it's been graded, the score will be processed and added to a database. You will be able
-            to access the database to get your score by entering your OpenCG Student ID.</p>
+            to access the database and get scores and information specific to your school alone.</p>
             <?php require "../../includes/footer.php"; ?>
         </div>
     </div>

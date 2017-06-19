@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <html>
     <head>
-        <title>OpenCG Student Registration</title>
+        <title>OpenCG Exam Score Portal</title>
         <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="../css/main.css" type="text/css">
         <script src="../js/jquery-3.2.1.min.js"></script>
@@ -25,10 +25,10 @@
                 <div class="col-md-6">
                     <div class="well">
                         <h2>Student?</h2>
-                        <form method="post" action="student/check.php">
+                        <form method="post" action="student/index.php">
                             <div class="input-group" style="width: 100%;">
                                 <label>OpenCG Student ID</label>
-                                <input name="studentID" type="text" class="form-control" placeholder="123456" required>
+                                <input name="userID" type="text" class="form-control" placeholder="123456" required>
                             </div>
                             <br>
                             <div class="input-group">
@@ -40,7 +40,7 @@
                 <div class="col-md-6">
                     <div class="well">
                         <h2>School or other Institution?</h2>
-                        <form method="post" action="institution/check.php">
+                        <form method="post" action="institution/index.php">
                             <div class="input-group" style="width: 100%;">
                                 <label>OpenCG School ID</label>
                                 <input name="schoolID" type="text" class="form-control" placeholder="123456" required>
@@ -53,10 +53,6 @@
                     </div>
                 </div>
             </div>
-            <h1>What is all this?</h1>
-            <p>You will need this information because this is what lets you access your examination scores. Once you take
-                one of our exams, and it's been graded, the score will be processed and added to a database. You will be able
-                to access the database to get your score by entering your OpenCG Student ID.</p>
             <?php require "../includes/footer.php"; ?>
         </div>
     </div>

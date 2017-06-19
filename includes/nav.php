@@ -21,6 +21,14 @@
                         <li><a href="/register/institution">School/Institution</a></li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forgot ID? <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/forgot/student">Student</a></li>
+                        <li><a href="/forgot/institution">School/Institution</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Help Center</a></li>
                 <li><a href="/check">Check Score</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
