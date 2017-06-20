@@ -8,7 +8,7 @@ $result = $conn->query("SELECT FROM students WHERE userID = '$userID'");
 // Get unique ID and make sure it doesn't exist. If it does exist, get a new one. Though the probability of it existing is little to none.
 while($result->num_rows != 0){
     $userID = mt_rand(100000, 999999);
-    $result = $conn->query("SELECT id FROM students WHERE id = '$userID'");
+    $result = $conn->query("SELECT id FROM students WHERE userId = '$userID'");
 }
 
 // Store POST data in separate variables
