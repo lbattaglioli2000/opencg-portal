@@ -28,7 +28,7 @@
                         <li><a href="/forgot/institution">School/Institution</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Help Center</a></li>
+                <li><a href="/help">Help Center</a></li>
                 <li><a href="/check">Check Score</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

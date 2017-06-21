@@ -53,7 +53,7 @@ $school = $result->fetch_assoc();
             }else{
                 echo "<h1>Now what?</h1>
                 <p>Please return to our Exam Score Portal and enter your ID again. If that doesn't work, please visit the ID recovery page. If none of these work, please contact us.</p>
-                <p><a href=\"../index.php\" class=\"btn btn-lg btn-primary\">Step 1: Exam Score Portal</a> <a href=\"../../forgot/student\" class=\"btn btn-lg btn-primary\">Step 2: ID Recovery</a> <a href=\"mailto:luigi@code-geek.pe.hu\" class=\"btn btn-lg btn-primary\">Step 3: Contact Us</a></p>";
+                <p><a href=\"../1\" class=\"btn btn-lg btn-primary\">Step 1: Exam Score Portal</a> <a href=\"../../forgot/student\" class=\"btn btn-lg btn-primary\">Step 2: ID Recovery</a> <a href=\"mailto:luigi@code-geek.pe.hu\" class=\"btn btn-lg btn-primary\">Step 3: Contact Us</a></p>";
             }
             ?>
             <?php require "../../includes/footer.php"; ?>

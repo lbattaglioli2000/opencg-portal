@@ -10,9 +10,9 @@ $url = $_POST['url'];
 $studentSql = "UPDATE students SET mid='$score',midURL='$url' WHERE userID='$userID';";
 
 if(mysqli_query($conn, $studentSql)){
-    header("Location: index.php"); 
+    header("Location: 1"); 
 }else{
-    echo ("Hmm. An error occured while updating the records. Please try again <a href=\"index.php\">here!</a>");
+    echo ("Hmm. An error occured while updating the records. Please try again <a href=\"1\">here!</a>");
 }
 
 ?>

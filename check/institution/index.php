@@ -55,7 +55,7 @@ $school = $teacherResult->fetch_assoc();
             }else if($teacherResult->num_rows == 0){
                 echo "<h1>Now what?</h1>";
                 echo "<p>Please return to our Exam Score Portal and enter your ID again. If that doesn't work, please visit the ID recovery page. If none of these work, please contact us.</p>
-                <p><a href=\"../index.php\" class=\"btn btn-lg btn-primary\">Step 1: Exam Score Portal</a> <a href=\"../../forgot/institution\" class=\"btn btn-lg btn-primary\">Step 2: ID Recovery</a> <a href=\"mailto:luigi@code-geek.pe.hu\" class=\"btn btn-lg btn-primary\">Step 3: Contact Us</a></p>";
+                <p><a href=\"../1\" class=\"btn btn-lg btn-primary\">Step 1: Exam Score Portal</a> <a href=\"../../forgot/institution\" class=\"btn btn-lg btn-primary\">Step 2: ID Recovery</a> <a href=\"mailto:luigi@code-geek.pe.hu\" class=\"btn btn-lg btn-primary\">Step 3: Contact Us</a></p>";
             }else{
                 echo "<h1>Looks like we've got nothin' to show ya.</h1>";
                 echo "<p>It seems that we have no data from your school in our databases! Administer one (or more!) of our exams, 
