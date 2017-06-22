@@ -33,22 +33,27 @@ $entriesResult = $conn->query($entriesSQL);
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1>Results for <small><?php echo $search; ?></small></h1>
                 <?php
                 /* fetch associative array
                  * for each row:
                  *      display the values in HTML
                  */
-
-                while ($row = $entriesResult->fetch_assoc()) {
-                    echo("<div class=\"panel panel-default\">
-              <div class=\"panel-body\">
-                <h2>". $row['title'] ."</h2>
-                <h4>". $row['date'] ."</h4>
-                <p>". $row['description'] ."</p>
-                <a href='". $row['url'] ."' class='btn btn-lg btn-primary'>Go to article</a>
-              </div>
+                if($entriesResult->num_rows == 0){
+                    echo("
+                    <img src='../includes/26514689.jpg'>
+                    ");
+                }else {
+                    echo "<h1>Results for <small><?php echo $search; ?></small></h1>";
+                    while ($row = $entriesResult->fetch_assoc()) {
+                        echo("<div class=\"panel panel-default\">
+                      <div class=\"panel-body\">
+                        <h2>" . $row['title'] . "</h2>
+                        <h4>" . $row['date'] . "</h4>
+                        <p>" . $row['description'] . "</p>
+                        <a href='" . $row['url'] . "' class='btn btn-lg btn-primary'>Go to article</a>
+                      </div>
             </div>");
+                    }
                 }
 
                 ?>

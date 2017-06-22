@@ -17,10 +17,17 @@ $email = strtolower($_POST['email']);
 $schoolID = $_POST['schoolID'];
 $schoolName = ucwords($_POST['schoolName']);
 
-
-// Insert data into database
-$sql = "INSERT INTO students (userID, userName, email, schoolID, schoolName)
+if(!empty($userName) && !empty($email) && !empty($schoolName)){
+    // Insert data into database
+    $sql = "INSERT INTO students (userID, userName, email, schoolID, schoolName)
 VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
+
+    if (mysqli_query($conn, $sql)) {
+        $registered = true;
+    }
+}else{
+    $registered = false;
+}
 
 ?>
     <!DOCTYPE html>
@@ -44,25 +51,44 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
         </div>
         <div class="container">
             <?php
-            if (mysqli_query($conn, $sql)) {
+            if ($registered) {
                 echo("<div class=\"alert alert-success\">
                         <p><b>Way to go, " . $userName . "!</b> You've successfully registered as a student! We recommend that you print out this
                 page and keep if for your records.</p>
+                      </div>");
+            }else{
+                echo("<div class=\"alert alert-warning\">
+                        <p><b>Hmm...</b> Something went wrong and we weren't able to add you to our registry. Please <a href='index.php'>go back</a> and try again!</p>
                       </div>");
             }
             ?>
 
             <h1>Student Information</h1>
-            <div class="well">
-                <h3>Name: <small><?php echo $userName; ?></small></h3>
-                <h3>OpenCG Student ID: <small><?php echo $userID; ?></small></h3>
-                <h3>School: <small><?php echo $schoolName; ?></small></h3>
-                <h3>Email: <small><?php echo $email; ?></small></h3>
+            <?php
+            if ($registered){
+                echo ("
+                <div class=\"well\">
+                <h3>Name: <small>".$userName."</small></h3>
+                <h3>OpenCG Student ID: <small>".$userID."</small></h3>
+                <h3>School: <small>".$schoolName."</small></h3>
+                <h3>Email: <small>".$email."</small></h3>
             </div>
             <h1>What is all this?</h1>
             <p>You will need this information because this is what lets you access your examination scores. Once you take
             one of our exams, and it's been graded, the score will be processed and added to a database. You will be able
             to access the database to get your score by entering your OpenCG Student ID.</p>
+                ");
+            }else{
+                echo (
+                        "<div class='well'>
+                            <h2>We apologize...</h2>
+                            <p>Unfortunately, we were unable to process your request. Please go back and try again!</p>
+                            <a class='btn btn-lg btn-primary' href='index.php'>Go back</a>
+                         </div>
+                        "
+                );
+            }
+            ?>
             <?php require "../../includes/footer.php"; ?>
         </div>
     </div>
