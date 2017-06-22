@@ -33,20 +33,24 @@ $entriesResult = $conn->query($entriesSQL);
             <div class="col-md-8">
                 <h1>Help Articles</h1>
                 <?php
-                /* fetch associative array
-                 * for each row:
-                 *      display the values in HTML
-                 */
 
-                while ($row = $entriesResult->fetch_assoc()) {
-                    echo("<div class=\"panel panel-default\">
-              <div class=\"panel-body\">
-                <h2>". $row['title'] ."</h2>
-                <h4>". $row['date'] ."</h4>
-                <p>". $row['description'] ."</p>
-                <a href='". $row['url'] ."' class='btn btn-lg btn-primary'>Go to article</a>
-              </div>
-            </div>");
+                if($entriesResult->num_rows == 0){
+                    echo "<div class='panel panel-default'>
+                            <div class='panel-body'>
+                                <p>We currently have no help articles. Check back later!</p>
+                            </div>
+                          </div>";
+                } else {
+                    while ($row = $entriesResult->fetch_assoc()) {
+                        echo("<div class=\"panel panel-default\">
+                                  <div class=\"panel-body\">
+                                    <h2>" . $row['title'] . "</h2>
+                                    <h4>" . $row['date'] . "</h4>
+                                    <p>" . $row['description'] . "</p>
+                                    <a href='" . $row['url'] . "' class='btn btn-lg btn-primary'>Go to article</a>
+                                  </div>
+                                </div>");
+                    }
                 }
 
                 ?>
