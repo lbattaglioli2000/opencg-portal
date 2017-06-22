@@ -2,9 +2,12 @@
 // connect to the database
 require('../connect.php');
 
+$search = $_POST['search'];
+
 // query the database to get
 // all of the entries in the database
-$entriesSQL = 'SELECT * FROM kb';
+
+$entriesSQL = "SELECT * FROM kb WHERE `title` LIKE '%{$search}%' OR `body` LIKE '%{$search}%' OR `description` LIKE '%{$search}%'";
 $entriesResult = $conn->query($entriesSQL);
 
 ?>
@@ -12,7 +15,7 @@ $entriesResult = $conn->query($entriesSQL);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OpenCG Help Center</title>
+    <title>Search Results: <?php echo $search; ?></title>
     <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../css/main.css" type="text/css">
     <script src="../js/jquery-3.2.1.min.js"></script>
@@ -24,14 +27,13 @@ $entriesResult = $conn->query($entriesSQL);
 <div class="content">
     <div class="jumbotron">
         <div class="container">
-            <h1>Welcome to the OpenCG Help Portal.</h1>
-            <p>Here you are able to find a large variety of helpful articles that may help make your OpenCG experience better.</p>
+            <h1>Here's what we found...</h1>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1>Help Articles</h1>
+                <h1>Results for <small><?php echo $search; ?></small></h1>
                 <?php
                 /* fetch associative array
                  * for each row:
@@ -50,25 +52,6 @@ $entriesResult = $conn->query($entriesSQL);
                 }
 
                 ?>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <h3>Not finding something? Try a search!</h3>
-                    <h4><span class="label label-warning">In Beta</span></h4>
-                    <br>
-                    <p>Seeing how search is still under development, please use as few words in your query in order to produce a result.</p>
-                    <br>
-                    <form action="search.php" method="post">
-                        <div class="input-group" style="width: 100%">
-                            <label>Search</label>
-                            <input name="search" type="text" class="form-control" placeholder="How to register as an institution..." required>
-                        </div>
-                        <br>
-                        <div class="input-group" style="width: 100%">
-                            <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
 
