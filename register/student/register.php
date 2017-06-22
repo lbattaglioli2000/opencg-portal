@@ -24,6 +24,13 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
 
     if (mysqli_query($conn, $sql)) {
         $registered = true;
+        $toAddress = $email;
+        $subject = "OpenCG Student Registration: " . $userName;
+        $emailBody = "Hello there, " . $userName . "!\nWe are excited to have you registered as a student here at CodeGeek! We just wanted to confirm with you, the information you registered with!\nName: " . $userName . "\nEmail: " . $email . "\nYour OpenCG ID: " . $userID . "\nSchool: " . $schoolName. "\n\nThank you again for registering with us! If you need any sort of help, please visit the help center on the OpenCG Portal.\n\nSincerely,\nLuigi @ CodeGeek";
+        $fromAddress = "From: luigi@opencg.pe.hu";
+        mail($toAddress, $subject, $emailBody, $fromAddress);
+    }else{
+        $registered = false;
     }
 }else{
     $registered = false;
@@ -77,6 +84,8 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
             <p>You will need this information because this is what lets you access your examination scores. Once you take
             one of our exams, and it's been graded, the score will be processed and added to a database. You will be able
             to access the database to get your score by entering your OpenCG Student ID.</p>
+            <h1>We emailed you all of this too...</h1>
+            <p>We sent a copy of this information to you. There's a good chance (because of the way we developed this portal) that our email is in your spam folder. The email should have come from <a href='mailto:luigi@opencg.pe.hu'>luigi@opencg.pe.hu</a>.</p>
                 ");
             }else{
                 echo (
@@ -96,8 +105,6 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
     </html>
 
 <?php
-
 //Do DB shit before this comment!
 mysqli_close($conn);
-
 ?>
