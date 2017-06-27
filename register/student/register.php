@@ -17,10 +17,24 @@ $email = strtolower($_POST['email']);
 $schoolID = $_POST['schoolID'];
 $schoolName = ucwords($_POST['schoolName']);
 
-
-// Insert data into database
-$sql = "INSERT INTO students (userID, userName, email, schoolID, schoolName)
+if(!empty($userName) && !empty($email) && !empty($schoolName)){
+    // Insert data into database
+    $sql = "INSERT INTO students (userID, userName, email, schoolID, schoolName)
 VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
+
+    if (mysqli_query($conn, $sql)) {
+        $registered = true;
+        $toAddress = $email;
+        $subject = "OpenCG Student Registration: " . $userName;
+        $emailBody = "Hello there, " . $userName . "!\nWe are excited to have you registered as a student here at CodeGeek! We just wanted to confirm with you, the information you registered with!\nName: " . $userName . "\nEmail: " . $email . "\nYour OpenCG ID: " . $userID . "\nSchool: " . $schoolName. "\n\nThank you again for registering with us! If you need any sort of help, please visit the help center on the OpenCG Portal.\n\nSincerely,\nLuigi @ CodeGeek";
+        $fromAddress = "From: luigi@opencg.pe.hu";
+        mail($toAddress, $subject, $emailBody, $fromAddress);
+    }else{
+        $registered = false;
+    }
+}else{
+    $registered = false;
+}
 
 ?>
     <!DOCTYPE html>
@@ -44,25 +58,46 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
         </div>
         <div class="container">
             <?php
-            if (mysqli_query($conn, $sql)) {
+            if ($registered) {
                 echo("<div class=\"alert alert-success\">
                         <p><b>Way to go, " . $userName . "!</b> You've successfully registered as a student! We recommend that you print out this
                 page and keep if for your records.</p>
+                      </div>");
+            }else{
+                echo("<div class=\"alert alert-warning\">
+                        <p><b>Hmm...</b> Something went wrong and we weren't able to add you to our registry. Please <a href='index.php'>go back</a> and try again!</p>
                       </div>");
             }
             ?>
 
             <h1>Student Information</h1>
-            <div class="well">
-                <h3>Name: <small><?php echo $userName; ?></small></h3>
-                <h3>OpenCG Student ID: <small><?php echo $userID; ?></small></h3>
-                <h3>School: <small><?php echo $schoolName; ?></small></h3>
-                <h3>Email: <small><?php echo $email; ?></small></h3>
+            <?php
+            if ($registered){
+                echo ("
+                <div class=\"well\">
+                <h3>Name: <small>".$userName."</small></h3>
+                <h3>OpenCG Student ID: <small>".$userID."</small></h3>
+                <h3>School: <small>".$schoolName."</small></h3>
+                <h3>Email: <small>".$email."</small></h3>
             </div>
             <h1>What is all this?</h1>
             <p>You will need this information because this is what lets you access your examination scores. Once you take
             one of our exams, and it's been graded, the score will be processed and added to a database. You will be able
             to access the database to get your score by entering your OpenCG Student ID.</p>
+            <h1>We emailed you all of this too...</h1>
+            <p>We sent a copy of this information to you. There's a good chance (because of the way we developed this portal) that our email is in your spam folder. The email should have come from <a href='mailto:luigi@opencg.pe.hu'>luigi@opencg.pe.hu</a>.</p>
+                ");
+            }else{
+                echo (
+                        "<div class='well'>
+                            <h2>We apologize...</h2>
+                            <p>Unfortunately, we were unable to process your request. Please go back and try again!</p>
+                            <a class='btn btn-lg btn-primary' href='index.php'>Go back</a>
+                         </div>
+                        "
+                );
+            }
+            ?>
             <?php require "../../includes/footer.php"; ?>
         </div>
     </div>
@@ -70,8 +105,6 @@ VALUES ('$userID', '$userName', '$email', '$schoolID', '$schoolName')";
     </html>
 
 <?php
-
 //Do DB shit before this comment!
 mysqli_close($conn);
-
 ?>

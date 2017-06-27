@@ -86,7 +86,7 @@
                 <div class="col-md-4">
                     <div class="well">
                         <h2>Midterm</h2>
-                        <form method="post" action="enterGrade.php">
+                        <form method="post" action="mid.php">
                             <div class="input-group" style="width: 100%;">
                                 <label>OpenCG Student ID</label>
                                 <input name="userID" type="text" class="form-control" placeholder="123456" required>
@@ -111,7 +111,7 @@
                 <div class="col-md-4">
                     <div class="well">
                         <h2>Post-Test</h2>
-                        <form method="post" action="enterGrade.php">
+                        <form method="post" action="post.php">
                             <div class="input-group" style="width: 100%;">
                                 <label>OpenCG Student ID</label>
                                 <input name="userID" type="text" class="form-control" placeholder="123456" required>

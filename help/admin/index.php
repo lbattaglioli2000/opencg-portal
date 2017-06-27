@@ -30,14 +30,13 @@
                         <li>We recommend you enable <a target="_blank" href="http://www.grammarly.com">Grammarly</a> to proofread your work.</li>
                     </ul>
                 </ol>
-                <p>All help articles can (<b>and must</b>) be written in HTML. You can write your HTML in the <i>Body</i> field below, and it will be rendered once the article is published.</p>
+                <p>All help articles can (<b>and must</b>) be written in HTML. You can write your HTML in the <i>Body</i> field below, and it will be rendered once the article is published. You can use all HTML5 tags and attributes here. They will be rendered. There's no need to define the <code>!DOCTYPE</code> or add a <code>&lt;head&gt;</code> tag or a <code>&lt;body&gt;</code></p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                    <form>
-                        <form action="publish.php" method="POST">
+                        <form method="POST" action="publish.php">
                             <div style="width: 100%" class="input-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control"/>
@@ -50,12 +49,11 @@
                             <br>
                             <div style="width: 100%" class="input-group">
                                 <label for="body">Article Body</label>
-                                <textarea class="form-control" rows="30" name="body">You can use all HTML5 tags and attributes here. They will be rendered. There's no need to define the !DOCTYPE or add a <code>&lt;head&gt;</code> tag or a <code>&lt;body&gt;</code></textarea>
+                                <textarea class="form-control" rows="30" name="body"></textarea>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary btn-lg">Publish Article</button>
                         </form>
-                    </form>
                 </div>
             </div>
         </div>

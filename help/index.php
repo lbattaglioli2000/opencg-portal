@@ -33,20 +33,24 @@ $entriesResult = $conn->query($entriesSQL);
             <div class="col-md-8">
                 <h1>Help Articles</h1>
                 <?php
-                /* fetch associative array
-                 * for each row:
-                 *      display the values in HTML
-                 */
 
-                while ($row = $entriesResult->fetch_assoc()) {
-                    echo("<div class=\"panel panel-default\">
-              <div class=\"panel-body\">
-                <h2>". $row['title'] ."</h2>
-                <h4>". $row['date'] ."</h4>
-                <p>". $row['description'] ."</p>
-                <a href='". $row['url'] ."' class='btn btn-lg btn-primary'>Go to article</a>
-              </div>
-            </div>");
+                if($entriesResult->num_rows == 0){
+                    echo "<div class='panel panel-default'>
+                            <div class='panel-body'>
+                                <p>We currently have no help articles. Check back later!</p>
+                            </div>
+                          </div>";
+                } else {
+                    while ($row = $entriesResult->fetch_assoc()) {
+                        echo("<div class=\"panel panel-default\">
+                                  <div class=\"panel-body\">
+                                    <h2>" . $row['title'] . "</h2>
+                                    <h4>" . $row['date'] . "</h4>
+                                    <p>" . $row['description'] . "</p>
+                                    <a href='" . $row['url'] . "' class='btn btn-lg btn-primary'>Go to article</a>
+                                  </div>
+                                </div>");
+                    }
                 }
 
                 ?>
@@ -56,13 +60,15 @@ $entriesResult = $conn->query($entriesSQL);
                     <h3>Not finding something? Try a search!</h3>
                     <h4><span class="label label-warning">In Beta</span></h4>
                     <br>
-                    <form>
+                    <p>Seeing how search is still under development, please use as few words in your query in order to produce a result.</p>
+                    <br>
+                    <form action="search.php" method="post">
                         <div class="input-group" style="width: 100%">
                             <label>Search</label>
                             <input name="search" type="text" class="form-control" placeholder="How to register as an institution..." required>
                         </div>
                         <br>
-                        <div class="input-group">
+                        <div class="input-group" style="width: 100%">
                             <button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
                         </div>
                     </form>
