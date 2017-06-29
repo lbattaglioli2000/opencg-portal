@@ -7,7 +7,7 @@ $search = $_POST['search'];
 // query the database to get
 // all of the entries in the database
 
-$entriesSQL = "SELECT * FROM kb WHERE `title` LIKE '%{$search}%' OR `body` LIKE '%{$search}%' OR `description` LIKE '%{$search}%'";
+$entriesSQL = "SELECT * FROM kb WHERE title LIKE '%{$search}%' OR body LIKE '%{$search}%' OR description LIKE '%{$search}%'";
 $entriesResult = $conn->query($entriesSQL);
 
 ?>
@@ -37,7 +37,7 @@ $entriesResult = $conn->query($entriesSQL);
                 if($entriesResult->num_rows == 0){
                     echo("<img src='../includes/26514689.jpg'>");
                 }else {
-                    echo "<h1>Results for <small><?php echo $search; ?></small></h1>";
+                    echo "<h1>Results for <small>".$search."</small></h1>";
                     while ($row = $entriesResult->fetch_assoc()) {
                         echo("<div class=\"panel panel-default\"><div class=\"panel-body\"><h2>" . $row['title'] . "</h2><h4>" . $row['date'] . "</h4><p>" . $row['description'] . "</p><a href='" . $row['url'] . "' class='btn btn-lg btn-primary'>Go to article</a></div></div>");
                     }

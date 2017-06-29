@@ -20,6 +20,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-warning">
+                    <p><b>Heads up!</b> This application doesn't work yet and has been disabled.</p>
+                </div>
                 <h1>Help Article Guidelines</h1>
                 <ol>
                     <li>Must not be an existing help article.</li>
@@ -36,7 +39,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="well">
-                        <form method="POST" action="publish.php">
+                        <form>
                             <div style="width: 100%" class="input-group">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control"/>
